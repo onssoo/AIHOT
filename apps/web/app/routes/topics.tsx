@@ -18,7 +18,7 @@ export async function loader({ request }: { request: Request }) {
 }
 
 export function meta() {
-  return pageMeta({ title: "主题", description: "按公司与模型、技术方向、内容形态聚合的 AI 主题页：OpenAI、Anthropic、Agent、多模态、论文与教程等 38 个方向。", path: "/topics", image: "/og/pages/topics.png" });
+  return pageMeta({ title: "主题", description: "按学校与城市、方向、内容形态聚合的主题页：两所学校、两座城市、证书课程、社团与活动、演出与展会。", path: "/topics", image: "/og/pages/topics.png" });
 }
 
 export function headers() {
@@ -36,7 +36,7 @@ export default function TopicsPage() {
   return (
     <div className="pb-10">
       <header className="pb-2 pt-5 lg:pt-1">
-        <h1 className="text-[24px] font-semibold leading-[1.3] text-ink">按主题看 AI</h1>
+        <h1 className="text-[24px] font-semibold leading-[1.3] text-ink">按主题看校园</h1>
         <p className="mt-1.5 text-[13px] leading-relaxed text-ink-3">
           按公司与模型、技术方向、内容形态浏览 <span className="num">{topics.length}</span> 个主题，持续汇集近期焦点与精选。
         </p>

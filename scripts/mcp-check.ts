@@ -54,7 +54,7 @@ try {
 
   // These reads are valid on a fresh site: an empty result set is still a successful public answer.
   await call(T.latest, { limit: 2 });
-  await call(T.search, { q: "OpenAI", limit: 2 });
+  await call(T.search, { q: "UBC", limit: 2 });
   await call(T.hot, { limit: 3 });
 
   // Exercise the remaining tools without depending on seeded reports/stories.

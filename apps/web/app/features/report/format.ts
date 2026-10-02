@@ -33,11 +33,11 @@ export function monthRange(key: string): [string, string] {
   return [`${key}-01`, ymd(new Date(Date.UTC(y, m, 0)))];
 }
 
-/** "这一天的 4 件 AI 大事" / "本周的 12 件 AI 大事" / "8 月的 20 件 AI 大事". */
+/** "这一天的 4 条重点" / "本周的 12 条重点" / "8 月的 20 条重点". */
 export function headline(kind: ReportKind, key: string, count: number): string {
-  if (kind === "daily") return `这一天的 ${count} 件 AI 大事`;
-  if (kind === "weekly") return `本周的 ${count} 件 AI 大事`;
-  return `${Number(key.slice(5, 7))} 月的 ${count} 件 AI 大事`;
+  if (kind === "daily") return `这一天的 ${count} 条重点`;
+  if (kind === "weekly") return `本周的 ${count} 条重点`;
+  return `${Number(key.slice(5, 7))} 月的 ${count} 条重点`;
 }
 
 /** "09.16" for a story inside a week or month. */

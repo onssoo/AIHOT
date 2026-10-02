@@ -1,385 +1,1719 @@
 {
-  "$comment": "示范信源：首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里增删改。字段说明见 docs/customize.md。",
+  "$comment": "示范信源：校园生活 + 城市信息（UBC／温哥华、澳门城市大学／澳门），首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里增删改。字段说明见 docs/customize.md。",
   "sources": [
     {
-      "id": "rss-openai-news",
-      "name": "OpenAI News",
+      "id": "rss-ubc-news",
+      "name": "UBC News",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://openai.com/news/rss.xml",
+        "feedUrl": "https://news.ubc.ca/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
       "tier": "T1",
       "first_party": true,
-      "owner_entity_id": "openai",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-google-deepmind",
-      "name": "Google DeepMind",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://deepmind.google/blog/rss.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": "google",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-google-research",
-      "name": "Google Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://research.google/blog/rss/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": "google",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "研究"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-hugging-face",
-      "name": "Hugging Face Blog",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://huggingface.co/blog/feed.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": "hugging-face",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "开源"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-microsoft-research",
-      "name": "Microsoft Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.microsoft.com/en-us/research/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": "microsoft",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "研究"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-nvidia-blog",
-      "name": "NVIDIA Blog",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://blogs.nvidia.com/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": "nvidia",
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-aws-ml",
-      "name": "AWS Machine Learning Blog",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://aws.amazon.com/blogs/machine-learning/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方",
-        "教程"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-github-ai",
-      "name": "GitHub Blog · AI & ML",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://github.blog/ai-and-ml/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-mistral",
-      "name": "Mistral AI",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://mistral.ai/rss.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "官方"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-bair",
-      "name": "Berkeley AI Research",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://bair.berkeley.edu/blog/feed.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T1",
-      "first_party": true,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 180,
-      "tags": [
-        "研究"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-the-verge-ai",
-      "name": "The Verge · AI",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
       "participation_mode": "editorial",
       "interval_minutes": 60,
       "tags": [
-        "媒体"
+        "官方",
+        "校园",
+        "温哥华"
       ],
       "site_fulltext": false,
-      "syndicate_fulltext": false
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc"
     },
     {
-      "id": "rss-techcrunch-ai",
-      "name": "TechCrunch · AI",
+      "id": "rss-ubc-recreation",
+      "name": "UBC Recreation",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "feedUrl": "https://www.recreation.ubc.ca/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
+      "tier": "T1",
+      "first_party": true,
       "participation_mode": "editorial",
       "interval_minutes": 60,
       "tags": [
-        "媒体"
+        "官方",
+        "健身",
+        "校园",
+        "温哥华"
       ],
       "site_fulltext": false,
-      "syndicate_fulltext": false
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc"
     },
     {
-      "id": "rss-ars-technica-ai",
-      "name": "Ars Technica · AI",
+      "id": "rss-ubc-extended-learning",
+      "name": "UBC Extended Learning",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://arstechnica.com/ai/feed/",
+        "feedUrl": "https://extendedlearning.ubc.ca/rss.xml",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
+      "tier": "T1",
+      "first_party": true,
       "participation_mode": "editorial",
       "interval_minutes": 60,
       "tags": [
-        "媒体"
+        "官方",
+        "课程",
+        "继续教育",
+        "温哥华"
       ],
       "site_fulltext": false,
-      "syndicate_fulltext": false
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc"
     },
     {
-      "id": "rss-mit-tech-review-ai",
-      "name": "MIT Technology Review · AI",
+      "id": "rss-ubc-ams",
+      "name": "AMS of UBC",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+        "feedUrl": "https://www.ams.ubc.ca/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 120,
-      "tags": [
-        "媒体"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
-      "id": "rss-the-decoder",
-      "name": "The Decoder",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://the-decoder.com/feed/",
-        "_aihot": {
-          "initialBackfillLimit": 8
-        }
-      },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
+      "tier": "T1_5",
+      "first_party": true,
       "participation_mode": "editorial",
       "interval_minutes": 60,
       "tags": [
-        "媒体"
+        "官方",
+        "社团",
+        "校园",
+        "温哥华"
       ],
       "site_fulltext": false,
-      "syndicate_fulltext": false
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc-ams"
     },
     {
-      "id": "rss-simon-willison",
-      "name": "Simon Willison",
+      "id": "rss-ubc-ams-events",
+      "name": "AMS Events (UBC)",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://simonwillison.net/atom/everything/",
+        "feedUrl": "https://www.ams.ubc.ca/events/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
+      "tier": "T1_5",
+      "first_party": true,
       "participation_mode": "editorial",
-      "interval_minutes": 120,
+      "interval_minutes": 60,
       "tags": [
-        "个人"
+        "官方",
+        "活动",
+        "社团",
+        "校园"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc-ams"
+    },
+    {
+      "id": "rss-ubyssey",
+      "name": "The Ubyssey",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://ubyssey.ca/rss/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1_5",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "校园",
+        "UBC"
       ],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-import-ai",
-      "name": "Import AI",
+      "id": "rss-the-peak",
+      "name": "The Peak (SFU)",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://importai.substack.com/feed",
+        "feedUrl": "https://the-peak.ca/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
       "tier": "T2",
       "first_party": false,
-      "owner_entity_id": null,
       "participation_mode": "editorial",
-      "interval_minutes": 180,
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "校园"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-ec-vancouver-weather",
+      "name": "Environment Canada · Vancouver Weather",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://weather.gc.ca/rss/weather/49.2827_-123.1207_e.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "天气",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-ec-vancouver-alerts",
+      "name": "Environment Canada · Vancouver Alerts",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://weather.gc.ca/rss/alerts/49.2827_-123.1207_e.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 15,
+      "tags": [
+        "官方",
+        "天气",
+        "预警",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-translink-buzzer",
+      "name": "The Buzzer (TransLink)",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://buzzer.translink.ca/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1_5",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "交通",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "translink"
+    },
+    {
+      "id": "rss-dailyhive",
+      "name": "Daily Hive",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://dailyhive.com/feed",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "美食",
+        "活动",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-604now",
+      "name": "604 Now",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://604now.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-scout-magazine",
+      "name": "Scout Magazine",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://scoutmagazine.ca/?feed=rss2",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "美食",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-vancouver-foodster",
+      "name": "Vancouver Foodster",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.vancouverfoodster.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
       "tags": [
         "个人",
-        "周刊"
+        "美食",
+        "温哥华"
       ],
       "site_fulltext": false,
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-latent-space",
-      "name": "Latent Space",
+      "id": "rss-foodology",
+      "name": "Foodology",
       "kind": "rss",
       "config": {
-        "feedUrl": "https://www.latent.space/feed",
+        "feedUrl": "https://foodology.ca/feed/",
         "_aihot": {
           "initialBackfillLimit": 8
         }
       },
       "tier": "T2",
       "first_party": false,
-      "owner_entity_id": null,
       "participation_mode": "editorial",
-      "interval_minutes": 180,
+      "interval_minutes": 60,
       "tags": [
-        "个人"
+        "个人",
+        "美食",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-foodgressing",
+      "name": "Foodgressing",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://foodgressing.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "个人",
+        "美食",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-vancouver-sun-food",
+      "name": "Vancouver Sun · Life & Food",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://vancouversun.com/category/life/food/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "美食",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-driving-ca",
+      "name": "Driving.ca",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://driving.ca/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "二手车",
+        "汽车"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-openroad",
+      "name": "OpenRoad Auto Group",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.openroad.ca/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "二手车",
+        "汽车",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-fitness-world",
+      "name": "Fitness World",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://fitnessworld.ca/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "健身",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-anirevo-vancouver",
+      "name": "Anirevo Vancouver",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://vancouver.animerevolution.ca/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1_5",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "动漫",
+        "漫展",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-anime-corner",
+      "name": "Anime Corner",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.animecorner.me/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "动漫",
+        "媒体"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-animehunch",
+      "name": "AnimeHunch",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://animehunch.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "动漫",
+        "媒体"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-myanimelist-news",
+      "name": "MyAnimeList News",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://myanimelist.net/rss/news.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "动漫",
+        "媒体"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-sakuracon",
+      "name": "Sakura-Con",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://sakuracon.org/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "动漫",
+        "漫展"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-isixsigma",
+      "name": "iSixSigma",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.isixsigma.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "Six Sigma",
+        "课程",
+        "认证"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-six-sigma-study-guide",
+      "name": "Six Sigma Study Guide",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.sixsigmastudyguide.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "Six Sigma",
+        "课程",
+        "认证"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-coursera-blog",
+      "name": "Coursera Blog",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://blog.coursera.org/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "课程",
+        "在线教育"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-cbc-bc",
+      "name": "CBC British Columbia",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.cbc.ca/webfeed/rss/rss-canada-britishcolumbia",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-global-bc",
+      "name": "Global News BC",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://globalnews.ca/bc/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-vancouver-sun",
+      "name": "Vancouver Sun",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://vancouversun.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-reddit-ubc",
+      "name": "r/UBC",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.reddit.com/r/UBC/.rss",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "社区",
+        "校园",
+        "UBC"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-reddit-vancouver",
+      "name": "r/vancouver",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.reddit.com/r/vancouver/.rss",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "社区",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-reddit-vancouverfood",
+      "name": "r/vancouverfood",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.reddit.com/r/vancouverfood/.rss",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "社区",
+        "美食",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-reddit-canskincare",
+      "name": "r/CanSkincare",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.reddit.com/r/CanSkincare/.rss",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "社区",
+        "美容",
+        "护肤"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-govmo-news",
+      "name": "澳門特區政府新聞",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.gov.mo/zh-hant/news/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "澳门",
+        "政府"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "macau-gov"
+    },
+    {
+      "id": "rss-gcs-news",
+      "name": "澳門新聞局 · 新聞",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://govinfohub.gcs.gov.mo/api/rss/n/zh-hant",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "澳门",
+        "新闻局"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "macau-gov"
+    },
+    {
+      "id": "rss-gcs-gov",
+      "name": "澳門新聞局 · 政府資訊",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://govinfohub.gcs.gov.mo/api/rss/g/zh-hant",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "澳门",
+        "新闻局"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "macau-gov"
+    },
+    {
+      "id": "rss-smg-warning",
+      "name": "澳門氣象局 · 天氣警告",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_WSignal_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 15,
+      "tags": [
+        "官方",
+        "天气",
+        "预警",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-smg-actual-weather",
+      "name": "澳門氣象局 · 天氣報告",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_ActualWeather_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "天气",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-smg-forecast",
+      "name": "澳門氣象局 · 天氣預報",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_WForecast_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "天气",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-smg-forecast-7day",
+      "name": "澳門氣象局 · 七日天氣預報",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_WForecast7days_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "天气",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-smg-temperature-alert",
+      "name": "澳門氣象局 · 冷暖天氣提示",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_temperatureAlert_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "天气",
+        "预警",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-smg-coastal-forecast",
+      "name": "澳門氣象局 · 海上天氣預報",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://rss.smg.gov.mo/c_WCoastal_forecast_rss.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "天气",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-news",
+      "name": "澳門交通事務局 · 新聞",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.dsat.gov.mo/tc/news_rss.aspx",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "交通",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-bus-news",
+      "name": "澳門交通事務局 · 巴士新聞",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.dsat.gov.mo/bus/tc/bus_news_rss.aspx",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "交通",
+        "巴士",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-bus-reroute",
+      "name": "澳門交通事務局 · 巴士改道",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.dsat.gov.mo/bus/tc/bus_croad_rss.aspx",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "交通",
+        "巴士",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-notice",
+      "name": "澳門交通事務局 · 通告",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.dsat.gov.mo/tc/notice_rss.aspx",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 30,
+      "tags": [
+        "官方",
+        "交通",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-emergency",
+      "name": "澳門交通事務局 · 特別消息",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.dsat.gov.mo/tc/emergency_rss.aspx",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 15,
+      "tags": [
+        "官方",
+        "交通",
+        "预警",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-dsat-traffic-push",
+      "name": "澳門交通事務局 · 路面推送",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://dis.dsat.gov.mo:8017/traffic/xml/pn_rss.htm?language=tc",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 15,
+      "tags": [
+        "官方",
+        "交通",
+        "实时",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-icm-events",
+      "name": "澳門文化局 · 活動",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "http://www.icm.gov.mo/rss/files/rssEvents_C.xml",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "活动",
+        "社团",
+        "文化",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-macao-news",
+      "name": "Macao News",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://macaonews.org/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-macao-news-sports",
+      "name": "Macao News · Sports",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://macaonews.org/category/sports/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "体育",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-macao-news-culture",
+      "name": "Macao News · Culture",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://macaonews.org/category/culture/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "文化",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-ponto-final",
+      "name": "Ponto Final",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://pontofinal-macau.com/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "葡语",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-hoje-macau",
+      "name": "Hoje Macau",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://hojemacau.com.mo/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "葡语",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-um-macau",
+      "name": "University of Macau",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.um.edu.mo/feed/",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "校园",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-reddit-macau",
+      "name": "r/Macau",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.reddit.com/r/Macau/.rss",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "社区",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-cityu-announcements",
+      "name": "澳門城市大學 · 重要公告",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://www.cityu.edu.mo/zh/category/news/important-announcement/",
+        "parseMode": "markdown",
+        "baseUrl": "https://www.cityu.edu.mo",
+        "denyUrlPrefixes": [
+          "https://www.cityu.edu.mo/zh/category/"
+        ]
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "公告",
+        "校园",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "cityu-macau"
+    },
+    {
+      "id": "web-cityu-news",
+      "name": "澳門城市大學 · 新聞",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://www.cityu.edu.mo/zh/category/news/",
+        "parseMode": "markdown",
+        "baseUrl": "https://www.cityu.edu.mo",
+        "denyUrlPrefixes": [
+          "https://www.cityu.edu.mo/zh/category/"
+        ]
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "新闻",
+        "校园",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "cityu-macau"
+    },
+    {
+      "id": "web-ubc-lfs-news",
+      "name": "UBC Land & Food Systems · News",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://lfs.ubc.ca/news",
+        "parseMode": "markdown",
+        "baseUrl": "https://lfs.ubc.ca"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "校园",
+        "应用生物",
+        "UBC"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc-lfs"
+    },
+    {
+      "id": "web-ubc-events",
+      "name": "UBC Events Calendar",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://events.ubc.ca/events/",
+        "parseMode": "markdown",
+        "baseUrl": "https://events.ubc.ca"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "活动",
+        "校园",
+        "UBC"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc"
+    },
+    {
+      "id": "web-vancouver-city-news",
+      "name": "City of Vancouver · News",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://vancouver.ca/news-calendar/news.aspx",
+        "parseMode": "markdown",
+        "baseUrl": "https://vancouver.ca"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "城市",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "vancouver-city"
+    },
+    {
+      "id": "web-translink-service-changes",
+      "name": "TransLink · Service Changes",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://www.translink.ca/schedules-and-maps/service-changes",
+        "parseMode": "markdown",
+        "baseUrl": "https://www.translink.ca"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "交通",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "translink"
+    },
+    {
+      "id": "web-openrice-macau",
+      "name": "OpenRice 澳門餐廳",
+      "kind": "web_list",
+      "config": {
+        "url": "https://r.jina.ai/https://www.openrice.com/zh/macau/restaurants",
+        "parseMode": "markdown",
+        "baseUrl": "https://www.openrice.com"
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "美食",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-ubc-rec-fitness",
+      "name": "UBC Recreation · Fitness",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.recreation.ubc.ca/fitness/",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "健身",
+        "UBC"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-ubc-ams-clubs",
+      "name": "AMS Clubs Directory",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.ams.ubc.ca/student-life/clubs/",
+        "parseMode": "html"
+      },
+      "tier": "T1_5",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "社团",
+        "校园"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false,
+      "owner_entity_id": "ubc-ams"
+    },
+    {
+      "id": "web-sport-mo-news",
+      "name": "澳門體育局 · 新聞",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.sport.gov.mo/zh/news",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "体育",
+        "健身",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-sport-mo-calendar",
+      "name": "澳門體育局 · 活動日曆",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.sport.gov.mo/zh/calendar",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "体育",
+        "活动",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-mgto-whatson",
+      "name": "澳門旅遊局 · 本月活動",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.macaotourism.gov.mo/zh-hant/events/whatson/",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "活动",
+        "美食",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-ipim",
+      "name": "澳門貿促局 IPIM",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.ipim.gov.mo/zh-hant/",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "会展",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-icm-news",
+      "name": "澳門文化局 · 新聞",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.icm.gov.mo/cn/news",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "文化",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-exmoo-life",
+      "name": "澳門力報 · 生活",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.exmoo.com/supplement/",
+        "parseMode": "html"
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "美食",
+        "生活",
+        "澳门"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-straight-events",
+      "name": "Georgia Straight · Events",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.straight.com/events",
+        "parseMode": "html"
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "演出",
+        "活动",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-cfox-events",
+      "name": "CFOX · Events",
+      "kind": "web_list",
+      "config": {
+        "url": "https://cfox.com/events/",
+        "parseMode": "html"
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "演出",
+        "活动",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-vancouver-civic-theatres",
+      "name": "Vancouver Civic Theatres · Events",
+      "kind": "web_list",
+      "config": {
+        "url": "https://vancouvercivictheatres.com/events/",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "演出",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-vancouver-convention-centre",
+      "name": "Vancouver Convention Centre · Events",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.vancouverconventioncentre.com/events",
+        "parseMode": "html"
+      },
+      "tier": "T1",
+      "first_party": true,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "官方",
+        "会展",
+        "温哥华"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-goodlife-blog",
+      "name": "GoodLife Fitness Blog",
+      "kind": "web_list",
+      "config": {
+        "url": "https://blog.goodlifefitness.com/",
+        "parseMode": "html"
+      },
+      "tier": "T2",
+      "first_party": false,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "健身",
+        "温哥华"
       ],
       "site_fulltext": false,
       "syndicate_fulltext": false
